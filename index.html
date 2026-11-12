@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-wf-page="6af5f346e0e77a82b5f9c8e5" data-wf-site="6af5f344e0e77a82b5f9c884" data-wf-status="1" lang="en">
+<html data-wf-page="6af5f346e0e77a82b5f9c8e5" data-wf-site="6af5f344e0e77a82b5f9c884" lang="en">
 <head>
   <meta charset="utf-8" />
   <title>FLAME's Dapper Site</title>
@@ -13,11 +13,21 @@
     !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
   </script>
 
-  <!-- Local Favicons (if present in your folder) -->
+  <!-- Local Favicons -->
   <link href="6af5f346e0e77a82b5f9c8ef_favicon.svg" rel="shortcut icon" type="image/x-icon" />
   <link href="6af5f346e0e77a82b5f9c8f0_webclip.svg" rel="apple-touch-icon" />
 
   <style>
+    /* Hides the Made in Webflow button */
+    .w-webflow-badge {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      pointer-events: none !important;
+    }
+
     html.lenis {
       height: auto;
     }
@@ -34,7 +44,18 @@
       pointer-events: none;
     }
   </style>
+
+  <script>
+    // Automatically deletes the Webflow badge if the JS tries to add it back
+    window.addEventListener("DOMContentLoaded", () => {
+      setInterval(() => {
+        const badge = document.querySelector(".w-webflow-badge");
+        if (badge) badge.remove();
+      }, 100);
+    });
+  </script>
 </head>
+
 <body>
   <div class="w-embed">
     <style>
